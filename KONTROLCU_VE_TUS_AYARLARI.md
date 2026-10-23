@@ -53,8 +53,8 @@ Modern aksiyon oyunlarındaki (Witcher, Dragon's Dogma, Elden Ring) en rahat kon
 | **Y** | **R2** | **Ağır / Güçlü Saldırı** |
 | **LB** | **L1** | **Yuvarlanma / Koşma (Sprint & Roll)** |
 | **RB** | **Triangle (Üçgen)** | **Can Basma / İksir (Kan Şişesi)** |
-| **LT** | **L2** | **Sol El Silahı / Savuşturma (Parry)** |
-| **RT** | **Circle (Daire)** | **Silah Dönüştürme (Trick Weapon)** |
+| **LT** | **L1** | **Silah Dönüştürme (Trick Weapon)** |
+| **RT** | **L2** | **Sol El Silahı / Savuşturma (Parry & Ateş)** |
 | **LS (Sol Çubuk Tık)** | **L3** | **Çömelme / Hızlı Adım** |
 | **RS (Sağ Çubuk Tık)** | **R3** | **Düşmana Kilitlenme (Lock-On)** |
 | **View (Back)** | **Touchpad** | **Dokunmatik Yüzey Menüsü** |
@@ -69,8 +69,10 @@ r1 = square
 r2 = triangle
 circle = l1
 triangle = r1
-l2 = l2
-l1 = r2
+# LT -> L1 (Silah Donusturme)
+l1 = l2
+# RT -> L2 (Silah Atesleme / Savusturma)
+l2 = r2
 l3 = l3
 r3 = r3
 pad_up = pad_up
@@ -130,3 +132,20 @@ Bu düzende:
 Bloodborne'da dokunmatik yüzeyin solu **Jestler (Hareketler)** menüsünü, sağı ise **Kişisel Eşyalar Hızlı Cebi**ni (Avcı İşareti, Fener, Molotof vb.) açar.
 - Eğer Xbox'taki **View (Back)** tuşunun Jestler yerine Kişisel Eşyalar menüsünü açmasını isterseniz:
   `input.ini` içerisindeki `touchpad_left = back` satırını `touchpad_right = back` olarak değiştirmeniz yeterlidir.
+
+---
+
+## 📳 4. Titreşim (Rumble / Vibration) Sorun Giderme
+
+Eğer oyun kolunuzda titreşim hissetmiyorsanız, bunun temel nedenleri ve çözümleri:
+
+1. **Bloodborne'un Kendi Titreşim Mekaniği:**
+   - Bloodborne her kılıç darbesinde veya sıradan saldırılarda sürekli titremez.
+   - Titreşim motoru; ağır hasar alındığında, **Visceral Attack (İç Organ Vuruşu / Kritik Vuruş)** yapıldığında veya boss savaşlarındaki büyük patlamalarda devreye girer.
+2. **Oyun İçi Titreşim Ayarı:**
+   - Oyun içinde `System (Sistem) -> Game Settings (Oyun Ayarları)` sekmesinde **Vibration Function (Titreşim Fonksiyonu)** seçeneğinin **ON (Açık)** olduğundan emin olun.
+3. **Bağlantı Türü (Kablo vs. Bluetooth):**
+   - Windows'ta Xbox kumandaları standart Bluetooth ile bağlandığında SDL3 titreşim protokolü bazen el sıkışmasını kaçırabilir.
+   - Kumandayı **USB-C kablosuyla** bağlamak titreşim sinyalini doğrudan XInput sürücüsü üzerinden garanti eder.
+4. **Oyundayken Çıkarıp Takma Hilesi:**
+   - Oyun açıldıktan sonra (ana menüde veya oyundayken) USB kablosunu çıkarıp tekrar takmak, SDL3 girdi motorunu sıfırlayarak titreşimi anında aktif hale getirir.
