@@ -1,0 +1,15 @@
+# Git ignore for Bloodborne.exe-Kurulum
+# Heavy binaries and personal saves are hosted on Google Drive, not in Git
+*.zip
+*.rar
+*.7z
+*.pkg
+*.bin
+*.log
+out/
+cache/
+captures/
+temp/
+savedata/
+game/
+CUSA03173/
